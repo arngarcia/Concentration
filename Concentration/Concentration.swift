@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Concentration
+struct Concentration
 {
     /*
     Application Programming Interface (API)
@@ -41,10 +41,12 @@ class Concentration
     }
     //creates an optional which is some value or nothing
     
-    func chooseCard(at index:Int) {
+    mutating func chooseCard(at index:Int) {
         /*
          Description: When you choose a card, it is either matched, or unmatched.
          This function receives an index and uses this index to see whether or not a card has already been matched
+         
+         if without Mutated ... it assumes it doesn't change the card game
          */
         assert(cards.indices.contains(index),"Concentration.chooseCard(at \(index)): chosen index not in cards")
         if !cards[index].isMatched{
