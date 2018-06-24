@@ -84,16 +84,17 @@ class ViewController: UIViewController {
     /*
      Item #6: Declare emoji dictionary in one line of code
     */
-    private var emojiDictionary = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : ["🦇","😱","🙀","😈","🎃", "👻","🍭","🍬","🍎"], #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1): ["🇨🇱","🇻🇦","🇻🇳","🇪🇺","🇬🇧","🇸🇬","🇿🇦","🇸🇪","🇸🇭"],#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1): ["🍏","🍎","🍐","🍊","🍋","🍌","🍉","🍇","🍓"],#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1): ["⚽️","🏀","🏈","⚾️","🎾","🏐","🏉","🎱","🏓"],#colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1): ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨"],#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1): ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒"]]
+    private var emojiDictionary = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : "🦇😱🙀😈🎃👻🍭🍬🍎", #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1): "🇨🇱🇻🇦🇻🇳🇪🇺🇬🇧🇸🇬🇿🇦🇸🇪🇸🇭",#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1): "🍏🍎🍐🍊🍋🍌🍉🍇🍓",#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1): "⚽️🏀🏈⚾️🎾🏐🏉🎱🏓",#colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1): "🐶🐱🐭🐹🐰🦊🐻🐼🐨",#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1): "🚗🚕🚙🚌🚎🏎🚓🚑🚒"]
     
-    private var emojiChoices = ["🍏","🍎","🍐","🍊","🍋","🍌","🍉","🍇","🍓"] //default view
+    private var emojiChoices = "🍏🍎🍐🍊🍋🍌🍉🍇🍓" //default view
     
     private var emoji = [Card:String]()
     
     private func emoji (for card:Card) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
             //swift never has automatic type conversion
-            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex,offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
         return emoji[card] ?? "?" //IMPT: optional defaulting operator
     }
