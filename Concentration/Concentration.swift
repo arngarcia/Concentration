@@ -57,7 +57,7 @@ struct Concentration
                 /*
                  TAKE NOTE: THE FIRST CARD IS ALREADY CHOSEN AND YOU'VE PICKED A SECOND CARD
                 */
-                if cards[matchIndex].identifier == cards[index].identifier
+                if cards[matchIndex] == cards[index]
                 {
                     /*
                      TAKE NOTE: MATCHED SCENARIO
@@ -79,7 +79,8 @@ struct Concentration
                     cards[index].wasMisMatched = true
                 }
                 cards[index].isFaceUp = true //ok
-                indexOfOneAndOnlyFaceUpCard = nil //reset the matchIndex
+            } else {
+                indexOfOneAndOnlyFaceUpCard = index
                 
             }
         }

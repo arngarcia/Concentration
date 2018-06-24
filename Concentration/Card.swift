@@ -8,8 +8,13 @@
 
 import Foundation
 
-struct Card
+struct Card: Hashable
 {
+    var hashValue: Int {return identifier}
+    
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
 /*structs and classes are very same
  2 major differences:
  (1) structs do not have inheritance while classes do;
@@ -24,7 +29,7 @@ struct Card
     var isFaceUp = false //determines if a card is face up or down (down by default)
     var isMatched = false //determines if a card has already been matched with another
     var wasMisMatched = false //determines whether or note a card has been mismatched
-    var identifier: Int //an identifier for the card
+    private var identifier: Int //an identifier for the card
     
     private static var identifierFactory = 0 //global variable for cards
     
